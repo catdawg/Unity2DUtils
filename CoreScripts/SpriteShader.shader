@@ -1,6 +1,6 @@
 Shader "SpriteShader" {
 	Properties {
-		_MainTex ("Base (RGB)", 2D) = "white" {}
+		_MainTex ("Base (RGBA)", 2D) = "white" {}
 	}
 	SubShader {
 		Tags {"Queue"="Transparent" "ForceNoShadowCasting"="True" "IgnoreProjector"="True"}
@@ -11,6 +11,7 @@ Shader "SpriteShader" {
 			Cull Off 
 			ZTest Always 
 			ZWrite Off 
+			Blend SrcAlpha OneMinusSrcAlpha
 			Fog { Mode Off }
 			SetTexture [_MainTex] { combine texture } 
 		}

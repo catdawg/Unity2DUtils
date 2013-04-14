@@ -3,7 +3,7 @@ import UnityEngine
  
 class FPSDisplay (MonoBehaviour): 
  
-    public updateInterval as single = 0.5
+    public updateInterval as single = 1.0
  
     private accum as single = 0 // FPS accumulated over the interval
     private frames as int = 0 // Frames drawn over the interval
@@ -21,7 +21,7 @@ class FPSDisplay (MonoBehaviour):
         ++frames
  
         if (timeleft <= 0.0):
-            fps = accum/frames
+            fps as single = accum/frames
             format = System.String.Format("FPS: {0:F2}", fps);
             guiText.text = format
  

@@ -33,36 +33,15 @@ class Sprite (MonoBehaviour):
 			
 		mesh = meshFilter.sharedMesh
 		if mesh == null :
-			meshFilter.sharedMesh = Mesh()
-			mesh = meshFilter.sharedMesh
+			meshFilter.mesh = Mesh()
+			mesh = meshFilter.mesh
 		
 		mesh.Clear();
 		
 		width = mat.GetTexture("_MainTex").width
 		height = mat.GetTexture("_MainTex").height
 		
-		vertices as (Vector3) = (
-			Vector3( width/2, height/2, 0),
-			Vector3( width/2, -height/2,0),
-			Vector3(-width/2, height/2, 0),
-			Vector3(-width/2, -height/2,0),
-		)
- 
-		uv as (Vector2) = (
-			Vector2(1, 1),
-			Vector2(1, 0),
-			Vector2(0, 1),
-			Vector2(0, 0),
-		)
- 
-		triangles as (int) = (
-			0, 1, 2,
-			2, 1, 3,
-		)
- 
-		mesh.vertices = vertices;
-		mesh.uv = uv;
-		mesh.triangles = triangles;
+		populateMeshWithQuad(mesh, width, height)
 		
 
 	
